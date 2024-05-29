@@ -9,7 +9,7 @@ import pandas as pd
 driver = webdriver.Chrome() 
 driver.get('https://x.com/Aspirin_4140')
 time.sleep(3)
-for c in range(0,5):
+for c in range(0,10000):
     driver.find_element(By.TAG_NAME, "body").send_keys(Keys.PAGE_DOWN)
 
     time.sleep(2)
