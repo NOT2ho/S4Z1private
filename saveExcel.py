@@ -7,18 +7,24 @@ import numpy as np
 import pandas as pd
 
 driver = webdriver.Chrome() 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument(r'user-data-dir=C:/remote-profile')
+chrome_options.add_experimental_option('detach', True)
+driver = webdriver.Chrome(options=chrome_options)
 driver.get('https://x.com/Aspirin_4140')
 time.sleep(3)
+
 for c in range(0,10000):
     driver.find_element(By.TAG_NAME, "body").send_keys(Keys.PAGE_DOWN)
 
-    time.sleep(2)
-    css17 = driver.find_elements(By.CLASS_NAME, "css-175oi2r")
+    time.sleep(0.5)
+    body = driver.find_elements(By.XPATH, '/html/body/div[1]/div/div/div[2]/main/div/div/div/div')
+    css17 = driver.find_elements(By.CLASS_NAME, "css-1jxf684")
     df = pd.DataFrame({'text' : ['start']})
    
-    for i in css17:
+    for i in body:
         context = i.text
         new_row = {'text' : [context]}
         print(context)
-        df = df._append(new_row, ignore_index=True)  
-        df.to_excel('df.xlsx')
+        df = df._append(new_row, ignore_index=True) 
+    df.to_excel('df.xlsx') 
