@@ -18,11 +18,13 @@ for c in range(0,10000):
     driver.find_element(By.TAG_NAME, "body").send_keys(Keys.PAGE_DOWN)
 
     time.sleep(0.5)
-    body = driver.find_elements(By.XPATH, '/html/body/div[1]/div/div/div[2]/main/div/div/div/div')
-    css17 = driver.find_elements(By.CLASS_NAME, "css-1jxf684")
+    #body = driver.find_elements(By.XPATH, '/html/body/div[1]/div/div/div[2]/main/div/div/div/div')
+    #className = driver.find_elements(By.CLASS_NAME,"css-175oi2r")
+    fe = driver.find_elements(By.CSS_SELECTOR, "#react-root > div > div > div.css-175oi2r.r-1f2l425.r-13qz1uu.r-417010.r-18u37iz > main > div > div > div > div > div > div:nth-child(3) > div > div > section > div > div > div:nth-child(6) > div > div > article > div > div > div.css-175oi2r.r-18u37iz > div.css-175oi2r.r-1iusvr4.r-16y2uox.r-1777fci.r-kzbkwu > div:nth-child(2)")
+    #css17 = driver.find_elements(By.CSS_SELECTOR, "#react-root > div > div > div.css-175oi2r.r-1f2l425.r-13qz1uu.r-417010.r-18u37iz > main > div > div > div > div > div > div:nth-child(3) > div > div > section > div > div > div:nth-child(6)")
     df = pd.DataFrame({'text' : ['start']})
    
-    for i in body:
+    for i in fe:
         context = i.text
         new_row = {'text' : [context]}
         print(context)
